@@ -5,13 +5,15 @@ const cors = require('cors');
 const app = express();
 const port = 4000;
 
-// Middleware global
+// Middlewares
 app.use(bodyParser.json());
 app.use(cors());
 
-// Importar las rutas
+// Importar las rutas de autenticación
 const authRoutes = require('./routes/authRoutes');
-app.use('/', authRoutes);  // Usar las rutas de autenticación
+
+// Usar las rutas de autenticación
+app.use('/', authRoutes);
 
 // Iniciar el servidor
 app.listen(port, () => {

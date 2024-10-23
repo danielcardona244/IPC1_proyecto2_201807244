@@ -1,23 +1,18 @@
 const express = require('express');
-const { login, verifyToken } = require('../controllers/authController');
-const verifyRole = require('../middleware/verifyRole'); // Importar el middleware de roles
+const { login } = require('../controllers/authController');
+const verifyToken = require('../middleware/verifyToken'); // Importar desde middleware/verifyToken
+const verifyRole = require('../middleware/verifyRole');    // Otro middleware
 
 const router = express.Router();
 
-// Ruta para el login
+// Rutas protegidas usando verifyToken
 router.post('/login', login);
-
-// Ruta protegida para administradores
 router.get('/admin', verifyToken, verifyRole(['admin']), (req, res) => {
     res.send('Bienvenido Administrador');
 });
-
-// Ruta protegida para profesores
 router.get('/profesor', verifyToken, verifyRole(['profesor', 'admin']), (req, res) => {
     res.send('Bienvenido Profesor');
 });
-
-// Ruta protegida para alumnos
 router.get('/alumno', verifyToken, verifyRole(['alumno', 'admin']), (req, res) => {
     res.send('Bienvenido Alumno');
 });
