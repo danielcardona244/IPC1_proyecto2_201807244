@@ -18,12 +18,16 @@ const adminRoutes = require('./routes/adminRoutes'); // las rutas de admin para 
 
 const studentRoutes = require('./routes/studentRoutes'); // rutas para crud de estudiantes
 
+const courseRoutes = require('./routes/courseRoutes'); // Importar las rutas de cursos
+
 //uso de rutas 
 app.use(authRoutes); //ruta de autenticacion
 
-app.use('/admin', adminRoutes);// Usando la ruta de admin para el crud de profesores
+app.use('/admin', adminRoutes);// agregar las ruta de admin para el crud de profesores
 
-app.use('/admin/students', studentRoutes)// Usando la ruta de estudiantes para el crud de estudiantes en admin
+app.use('/admin/students', studentRoutes)// agregar las ruta de estudiantes para el crud de estudiantes en admin
+
+app.use('/admin/course', courseRoutes); // Agregar las rutas de cursos
 
 // Iniciar el servidor
 app.listen(port, () => {
