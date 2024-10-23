@@ -10,16 +10,20 @@ const port = 4000;
 app.use(bodyParser.json());
 app.use(cors());
 
-// ruta de login
-const authRoutes = require('./routes/authRoutes');
 
-// Importar las rutas de admin
-const adminRoutes = require('./routes/adminRoutes');
+//rutas
+const authRoutes = require('./routes/authRoutes');// ruta de login
 
-//ruta de autenticacion
-app.use(authRoutes);
-// Usar las rutas
-app.use('/admin', adminRoutes);
+const adminRoutes = require('./routes/adminRoutes'); // las rutas de admin para el crud de profesores
+
+const studentRoutes = require('./routes/studentRoutes'); // rutas para crud de estudiantes
+
+//uso de rutas 
+app.use(authRoutes); //ruta de autenticacion
+
+app.use('/admin', adminRoutes);// Usando la ruta de admin para el crud de profesores
+
+app.use('/admin/students', studentRoutes)// Usando la ruta de estudiantes para el crud de estudiantes en admin
 
 // Iniciar el servidor
 app.listen(port, () => {
