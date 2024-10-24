@@ -10,6 +10,9 @@ const port = 4000;
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(express.json());
+app.use('/login', require('./routes/authRoutes'));
+
 
 // importacion rutas del modulo de administrador 
 
