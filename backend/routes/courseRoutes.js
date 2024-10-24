@@ -1,3 +1,5 @@
+// rutas para crud de cursos en el modulo de admin
+
 const express = require('express');
 const { cargarCursos, exportarCursos, editarCurso, eliminarCurso } = require('../controllers/courseController');
 const verifyToken = require('../middleware/verifyToken');

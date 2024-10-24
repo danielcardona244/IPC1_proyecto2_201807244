@@ -1,3 +1,7 @@
+/*
+controladores que usare en el crud
+de profesores en el modulo de admin
+ */
 const bcrypt = require('bcrypt');
 const xlsx = require('xlsx');
 const fs = require('fs');

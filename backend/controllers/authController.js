@@ -1,9 +1,12 @@
+//controlador de auntenticador 
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY = 'mi_secreto';
 
 const users = [
-    { id: 1, username: 'admin', password: bcrypt.hashSync('admin', 10), role: 'admin' }
+    { id: 1, username: 'admin', password: bcrypt.hashSync('admin', 10), role: 'admin' },
+    { id: 2, username: 'profesor', password: bcrypt.hashSync('profesor_password', 10), role: 'profesor' }
 ];
 
 // Controlador para manejar el login

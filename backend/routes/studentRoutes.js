@@ -1,3 +1,5 @@
+// rutas para el crud de estudiantes en el modulo de admin
+
 const express = require('express');
 const { cargarEstudiantes, exportarEstudiantes, editarEstudiante, eliminarEstudiante } = require('../controllers/studentController');
 const verifyToken = require('../middleware/verifyToken');

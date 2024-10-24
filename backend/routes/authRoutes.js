@@ -1,3 +1,5 @@
+// rutas para auntenticador
+
 const express = require('express');
 const { login } = require('../controllers/authController');
 const verifyToken = require('../middleware/verifyToken'); // Importar desde middleware/verifyToken

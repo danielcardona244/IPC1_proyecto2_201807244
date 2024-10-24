@@ -1,3 +1,5 @@
+//rutas para el crud de profesores en el modulo de admin
+
 const express = require('express');
 const { cargarProfesores, exportarProfesores, editarProfesor, eliminarProfesor } = require('../controllers/adminController');
 const verifyToken = require('../middleware/verifyToken');

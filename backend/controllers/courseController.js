@@ -1,3 +1,8 @@
+/*
+controladores que usare en el crud
+de cursos en el modulo de admin
+ */
+
 const cursos = []; // Cursos almacenados temporalmente en memoria
 const xlsx = require('xlsx');
 const fs = require('fs');
