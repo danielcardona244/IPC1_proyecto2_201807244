@@ -1,6 +1,6 @@
 /*
 controladores del modulo de profesores
-del inicio y del crud
+del inicio, crud y reportes
  */
 
 const cursos = [

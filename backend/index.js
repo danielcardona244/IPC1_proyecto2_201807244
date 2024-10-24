@@ -20,7 +20,11 @@ const courseRoutes = require('./routes/courseRoutes'); // rutas de cursos
 
 // importacion rutas del modulo de profesores
 
-const teacherRoutes = require('./routes/teacherRoutes'); //rutas de inicio y crud 
+const teacherRoutes = require('./routes/teacherRoutes'); //rutas de inicio, crud y reportes
+
+// importacion rutas del modulo de estudiantes
+
+const modStudentRoutes = require('./routes/modStudentRoutes'); // rutas de inicio,crud y reportes
 
 //uso de rutas del modulo admin
 
@@ -31,7 +35,11 @@ app.use('/admin/course', courseRoutes); // rutas del crud cursos  /admin/cursos
 
 // uso de rutas del modulo de profesores
 
-app.use('/teacher', teacherRoutes); // ruta inicio y crud 
+app.use('/teacher', teacherRoutes); 
+
+//uso de rutas del modulo de estudiantes
+
+app.use('/student', modStudentRoutes);
 
 // Iniciar el servidor
 app.listen(port, () => {

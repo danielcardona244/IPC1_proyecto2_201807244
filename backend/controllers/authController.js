@@ -6,7 +6,8 @@ const SECRET_KEY = 'mi_secreto';
 
 const users = [
     { id: 1, username: 'admin', password: bcrypt.hashSync('admin', 10), role: 'admin' },
-    { id: 2, username: 'profesor', password: bcrypt.hashSync('profesor_password', 10), role: 'profesor' }
+    { id: 2, username: 'profesor', password: bcrypt.hashSync('profesor_password', 10), role: 'profesor' },
+    { id: 3, username: 'nombreEstudiante', password: bcrypt.hashSync('passwordEstudiante', 10), role: 'student' }
 ];
 
 // Controlador para manejar el login
