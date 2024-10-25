@@ -1,7 +1,5 @@
-// rutas para el crud de estudiantes en el modulo de admin
-
 const express = require('express');
-const { cargarEstudiantes, exportarEstudiantes, editarEstudiante, eliminarEstudiante } = require('../controllers/studentController');
+const { cargarEstudiantes, exportarEstudiantes, editarEstudiante, eliminarEstudiante, obtenerEstudiantes } = require('../controllers/studentController');
 const verifyToken = require('../middleware/verifyToken');
 const verifyRole = require('../middleware/verifyRole');
 
@@ -12,6 +10,9 @@ router.post('/carga-masiva', verifyToken, verifyRole(['admin']), cargarEstudiant
 
 // Ruta para exportar los estudiantes a Excel
 router.get('/exportar', verifyToken, verifyRole(['admin']), exportarEstudiantes);
+
+// Ruta para obtener los estudiantes
+router.get('/', verifyToken, verifyRole(['admin']), obtenerEstudiantes);
 
 // Ruta para editar un estudiante
 router.put('/editar/:carnet', verifyToken, verifyRole(['admin']), editarEstudiante);

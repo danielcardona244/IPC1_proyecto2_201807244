@@ -30,10 +30,10 @@ function Dashboard() {
             <Link to="/admin">Gestionar Profesores</Link>
           </li>
           <li>
-            <Link to="/admin/estudiantes">Gestionar Estudiantes</Link>
+            <Link to="/admin/students">Gsestionar Estudiantes</Link>
           </li>
           <li>
-            <Link to="/admin/cursos">Gestionar Cursos</Link>
+            <Link to="/admin/course">Gestionar Cursos</Link>
           </li>
         </ul>
       </div>

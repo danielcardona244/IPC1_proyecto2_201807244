@@ -16,8 +16,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} /> {/*modulo admin*/}
         {/* Rutas para los CRUD con prefijo 'admin' */}
         <Route path="/admin" element={<AdminProfesoresCrud />} />
-        <Route path="/admin/estudiantes" element={<AdminEstudiantesCrud />} />
-        <Route path="/admin/cursos" element={<AdminCursosCrud />} />
+        <Route path="/admin/students" element={<AdminEstudiantesCrud />} />
+        <Route path="/admin/course" element={<AdminCursosCrud />} />
       </Routes>
     </Router>
   );

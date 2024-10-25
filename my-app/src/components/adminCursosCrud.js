@@ -8,7 +8,7 @@ function AdminCursosCrud() {
 
   useEffect(() => {
     // Cargar los cursos desde la API
-    axios.get('http://localhost:4000/admin/cursos')
+    axios.get('http://localhost:4000/admin/course')
       .then((response) => {
         setCursos(response.data);
       });
