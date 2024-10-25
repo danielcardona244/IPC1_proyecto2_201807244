@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
       <h1>Bienvenido a ECYS</h1>
-      <img src="/path/to/logo.png" alt="Logo ECYS" style={{ width: '150px' }} />
+      <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo ECYS" style={{ width: '150px' }} />
       <p>
         <strong>Nombre de la aplicación:</strong> Sistema de Gestión Académica ECYS
       </p>
@@ -22,7 +22,7 @@ const Home = () => {
       </p>
       <h2>Contacto:</h2>
       <p>
-        <strong>Estudiante:</strong> [Daniel Cristobal Cardona Aguirre] <br />
+        <strong>Estudiante:</strong> Daniel Cristobal Cardona Aguirre <br />
         <strong>Email:</strong> danielcardonacs@gmail.com
       </p>
       <Link to="/login">

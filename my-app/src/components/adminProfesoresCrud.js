@@ -146,49 +146,46 @@ function AdminProfesoresCrud() {
   };
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h2 style={{ textAlign: 'center' }}>Profesores</h2>
+    <div>
+    <h2>Gestión de Profesores</h2>
 
-      {/* Botones para cargar profesores y exportar */}
-      <div style={{ marginBottom: '15px', textAlign: 'center' }}>
-        <input type="file" onChange={handleFileChange} accept=".json" />
-        <button onClick={handleUpload} style={{ marginLeft: '10px', padding: '5px 10px' }}>Cargar Profesores</button>
-        <button onClick={handleLogout} style={{ marginLeft: '10px', padding: '5px 10px' }}>Cerrar Sesión</button>
-      </div>
+    <button onClick={handleLogout}>Cerrar Sesión</button>
 
-      {/* Tabla de profesores */}
-      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
-        <thead>
-          <tr style={{ backgroundColor: '#f2f2f2' }}>
-            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Código</th>
-            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Nombres y Apellidos</th>
-            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Correo</th>
-            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Género</th>
-            <th style={{ padding: '10px', border: '1px solid #ddd' }}>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {profesores.length > 0 ? (
-            profesores.map((profesor) => (
-              <tr key={profesor.codigo}>
-                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'center' }}>{profesor.codigo}</td>
-                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'center' }}>{profesor.nombre}</td>
-                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'center' }}>{profesor.correo}</td>
-                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'center' }}>{profesor.genero.toUpperCase()}</td>
-                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'center' }}>
-                  <button onClick={() => handleEditar(profesor.codigo)} style={{ marginRight: '10px', padding: '5px' }}>✏️</button>
-                  <button onClick={() => handleEliminar(profesor.codigo)} style={{ padding: '5px' }}>🗑️</button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="5" style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'center' }}>No hay profesores disponibles</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+    <div>
+      <input type="file" onChange={handleFileChange} accept=".json" />
+      <button onClick={handleUpload}>Cargar Profesores</button>
     </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Género</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Array.isArray(profesores) && profesores.length > 0 ? (
+          profesores.map((profesor) => (
+            <tr key={profesor.codigo}>
+              <td>{profesor.nombre}</td>
+              <td>{profesor.correo}</td>
+              <td>{profesor.genero}</td>
+              <td>
+                <button onClick={() => handleEditar(profesor.codigo)}>Editar</button>
+                <button onClick={() => handleEliminar(profesor.codigo)}>Eliminar</button>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="4">No hay profesores disponibles</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
   );
 }
 
