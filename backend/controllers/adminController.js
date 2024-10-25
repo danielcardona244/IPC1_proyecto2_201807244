@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const xlsx = require('xlsx');
 const fs = require('fs');
 
-
 // Simulamos una base de datos temporal en memoria
 const profesores = [];
 
@@ -14,15 +13,25 @@ const profesores = [];
 exports.cargarProfesores = (req, res) => {
     const nuevosProfesores = req.body; // El array de profesores viene en el body como JSON
 
+    if (!Array.isArray(nuevosProfesores)) {
+        return res.status(400).json({ message: 'Formato de archivo incorrecto. Se esperaba un array de profesores.' });
+    }
+
     nuevosProfesores.forEach(profesor => {
+        // Validar que el campo 'genero' exista y sea válido ('m' o 'f')
+        if (!profesor.genero || (profesor.genero !== 'm' && profesor.genero !== 'f')) {
+            return res.status(400).json({ message: `El campo 'genero' es obligatorio y debe ser 'm' o 'f'. Profesor con código ${profesor.codigo} tiene un valor incorrecto.` });
+        }
+
         // Encriptar la contraseña antes de almacenarla
         const hashedPassword = bcrypt.hashSync(profesor.contrasenia, 10);
         profesor.contrasenia = hashedPassword;
+        
         // Agregar el profesor al array en memoria
         profesores.push(profesor);
     });
 
-    res.json({ message: 'Profesores cargados correctamente' });
+    res.json({ message: 'Profesores cargados correctamente', profesores: nuevosProfesores });
 };
 
 // Exportar profesores a un archivo Excel
@@ -43,7 +52,7 @@ exports.exportarProfesores = (req, res) => {
     });
 };
 
-// Editar un profesor por su código
+// Editar un profesor por su código (sin modificar el campo 'genero')
 exports.editarProfesor = (req, res) => {
     const { codigo } = req.params;
     const { nombre, correo, contrasenia } = req.body;
@@ -59,7 +68,6 @@ exports.editarProfesor = (req, res) => {
     
     res.json({ message: 'Profesor actualizado correctamente' });
 };
-
 
 // Eliminar un profesor por su código
 exports.eliminarProfesor = (req, res) => {

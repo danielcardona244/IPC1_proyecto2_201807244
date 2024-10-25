@@ -7,9 +7,7 @@ const app = express();
 const port = 4000;
 
 // Middlewares
-app.use(bodyParser.json());
 app.use(cors());
-
 app.use(express.json());
 app.use('/login', require('./routes/authRoutes'));
 
