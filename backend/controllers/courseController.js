@@ -1,8 +1,3 @@
-/*
-controladores que usare en el crud
-de cursos en el modulo de admin
- */
-
 const cursos = []; // Cursos almacenados temporalmente en memoria
 const xlsx = require('xlsx');
 const fs = require('fs');
@@ -21,7 +16,7 @@ exports.cargarCursos = (req, res) => {
             alumnos: curso.alumnos
         });
     });
-    res.json({ message: 'Cursos cargados correctamente' });
+    res.json({ message: 'Cursos cargados correctamente', cursos });
 };
 
 // Exportar los cursos a un archivo Excel
@@ -39,6 +34,11 @@ exports.exportarCursos = (req, res) => {
             fs.unlinkSync(archivoPath); // Borrar el archivo después de enviarlo
         }
     });
+};
+
+// Obtener la lista de cursos cargados
+exports.obtenerCursos = (req, res) => {
+    res.json(cursos); // Devolver el array de cursos cargados
 };
 
 // Editar un curso por su código

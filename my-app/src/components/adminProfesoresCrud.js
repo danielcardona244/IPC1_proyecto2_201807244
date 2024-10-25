@@ -139,6 +139,26 @@ function AdminProfesoresCrud() {
   };
   
 
+    // Nueva función para exportar a Excel
+    const handleExportarExcel = () => {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+        responseType: 'blob' // Para manejar la descarga del archivo
+      };
+      axios.get('http://localhost:4000/admin/exportar', config)
+        .then((response) => {
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', 'profesores.xlsx');
+          document.body.appendChild(link);
+          link.click();
+        })
+        .catch((error) => console.error('Error al exportar los profesores:', error));
+    };
+
+
     // Método para cerrar sesión y redirigir al login
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -154,6 +174,7 @@ function AdminProfesoresCrud() {
     <div>
       <input type="file" onChange={handleFileChange} accept=".json" />
       <button onClick={handleUpload}>Cargar Profesores</button>
+      <button onClick={handleExportarExcel}>Exportar a Excel</button>
     </div>
 
     <table>
