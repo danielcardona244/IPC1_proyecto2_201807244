@@ -17,11 +17,6 @@ function Dashboard() {
       <h1>Bienvenido al Panel de Administración</h1>
       <button onClick={handleLogout}>Cerrar Sesión</button> {/* Botón de cerrar sesión */}
 
-      <div className="stats">
-        <h3>Total Profesores: 10</h3>
-        <h3>Total Estudiantes: 100</h3>
-        <h3>Total Cursos: 5</h3>
-      </div>
 
       <div className="admin-options">
         <h2>Opciones de Gestión</h2>
